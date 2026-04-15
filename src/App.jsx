@@ -1,15 +1,24 @@
-// import { useState } from 'react'
-import {  BrowserRouter as Router, Routes, Route } from 'react-router-dom'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './assets/vite.svg'
-// import heroImg from './assets/hero.png'
+import { useState } from 'react'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+
+import MainLayout from './components/MainLayout'
+import MonitorLayout from './components/MonitorLayout'
+import Dashboard from './Pages/Dashboard'
 import './App.css'
 
 function App() {
 
   return (
     <>
-      <h1 className="text-center bold text-2xl">Selamat datang!</h1>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<MainLayout />} />
+
+          <Route element={<MonitorLayout />}>
+            <Route path="/dashboard" element={<Dashboard />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
     </>
   )
 }
